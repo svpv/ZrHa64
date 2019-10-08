@@ -78,6 +78,7 @@ uint64_t ZrHa64_long_avx2(const void *data, size_t len, uint64_t seed0, uint64_t
     __m128i state0 = _mm256_extracti128_si256(state[0], 0);
     __m128i state1 = _mm256_extracti128_si256(state[0], 1);
     _mm256_zeroupper();
+    ZrHa_addlen(&state0, len);
     // down to a single SSE2 register
     ZrHa_merge(&state0, &state1);
     return ZrHa_final(state0);
