@@ -31,6 +31,7 @@ extern uint64_t ZrHa64_IV[8];
 uint64_t ZrHa64_long_generic(const void *data, size_t len, uint64_t seed0, uint64_t seed1);
 uint64_t ZrHa64_long_sse2(const void *data, size_t len, uint64_t seed0, uint64_t seed1);
 uint64_t ZrHa64_long_avx2(const void *data, size_t len, uint64_t seed0, uint64_t seed1);
+uint64_t ZrHa64_long_neon(const void *data, size_t len, uint64_t seed0, uint64_t seed1);
 
 #ifdef __GNUC__
 #pragma GCC visibility pop
