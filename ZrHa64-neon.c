@@ -52,7 +52,7 @@ static inline void ZrHa_merge(uint64x2_t *state, const uint64x2_t *other)
 
 static inline void ZrHa_addlen(uint64x2_t *state, uint32_t len)
 {
-    uint64x2_t xlen = vdupq_n_u64(len * 2654435761);
+    uint64x2_t xlen = vdupq_n_u64(len * 2654435761U);
     *state = veorq_u64(*state, xlen);
 }
 
