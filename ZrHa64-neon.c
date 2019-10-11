@@ -44,7 +44,7 @@ static inline void ZrHa_update(uint64x2_t *state, const void *data)
 static inline void ZrHa_merge(uint64x2_t *state, const uint64x2_t *other)
 {
     uint64x2_t x = vaddq_u64(*state, vrevq_u64(*other));
-    uint64x2_t acc = vrevq_u64(x);
+    uint64x2_t acc = vextq_u64(x, x, 1);
     uint32x2_t xlo = vmovn_u64(x);
     uint32x2_t xhi = vshrn_n_u64(x, 32);
     *state = vmlal_u32(acc, xlo, xhi);
