@@ -26,7 +26,7 @@
 #endif
 
 // Default initialization vector (further to be XORed with seed0/seed1).
-extern uint64_t ZrHa64_IV[8];
+extern uint64_t ZrHa64_IV[12];
 
 uint64_t ZrHa64_long_generic(const void *data, size_t len, uint64_t seed0, uint64_t seed1);
 uint64_t ZrHa64_long_sse2(const void *data, size_t len, uint64_t seed0, uint64_t seed1);

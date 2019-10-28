@@ -21,8 +21,9 @@
 #include <stdalign.h>
 #include "ZrHa64-common.h"
 
-alignas(64) uint64_t ZrHa64_IV[8] = {
-    // Constants borrowed from SHA512_Init.
+alignas(32) uint64_t ZrHa64_IV[12] = {
+    // Constants borrowed from SHA512_Init (dervied from the squre root
+    // of the first 8 primes).
     UINT64_C(0x6a09e667f3bcc908),
     UINT64_C(0xbb67ae8584caa73b),
     UINT64_C(0x3c6ef372fe94f82b),
@@ -31,4 +32,10 @@ alignas(64) uint64_t ZrHa64_IV[8] = {
     UINT64_C(0x9b05688c2b3e6c1f),
     UINT64_C(0x1f83d9abfb41bd6b),
     UINT64_C(0x5be0cd19137e2179),
+    // Extra constants borrowed from SHA384_Init (derived from the squre root
+    // of subsequent primes starting with the 9th).
+    UINT64_C(0xcbbb9d5dc1059ed8),
+    UINT64_C(0x629a292a367cd507),
+    UINT64_C(0x9159015a3070dd17),
+    UINT64_C(0x152fecd8f70e5939),
 };
