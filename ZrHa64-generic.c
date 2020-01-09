@@ -40,10 +40,12 @@ static inline void ZrHa_update(uint64_t state[2], uint64_t data[2])
 {
     uint64_t x0 = state[0] + data[0];
     uint64_t x1 = state[1] + data[1];
-    uint64_t m0 = (uint32_t) x0 * (x0 >> 32);
-    uint64_t m1 = (uint32_t) x1 * (x1 >> 32);
-    state[0] = m0 + rotl64(x1, 32);
-    state[1] = m1 + rotl64(x0, 32);
+    uint64_t x0_rev = rotl64(x0, 32);
+    uint64_t x1_rev = rotl64(x1, 32);
+    uint64_t m0 = (uint64_t)(uint32_t) x0 * (uint64_t)(uint32_t) x0_rev;
+    uint64_t m1 = (uint64_t)(uint32_t) x1 * (uint64_t)(uint32_t) x1_rev;
+    state[0] = m0 + x1_rev;
+    state[1] = m1 + x0_rev;
 }
 
 static inline void ZrHa_feed(uint64_t state[2], const char *p)
